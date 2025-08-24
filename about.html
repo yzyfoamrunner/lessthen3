@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - HYUAAE</title>
+    <style>
+        body {
+            background-color: #121212; /* A dark, near-black color */
+            color: #e0e0e0; /* A soft white for text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .links a {
+            display: inline-block;
+            margin: 0 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .links a:hover {
+            transform: scale(1.1);
+        }
+
+        .links img {
+            width: 40px;
+            height: 40px;
+            filter: invert(1); /* Makes the icons white to match the theme */
+
+
+        
+        }
+        .cemj-menu {
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        .cemj-menu a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: transform 0.3s ease, opacity 0.2s ease;
+        }
+
+        /* When the menu is visible, transition the links to their final state */
+        .cemj-menu.visible a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Apply the hover effect to visible items */
+        .cemj-menu.visible a:hover {
+            transform: translateX(10px);
+        }
+
+        /* Staggered transition delays for both appearing and disappearing */
+        .cemj-menu a:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+        .cemj-menu a:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+        .cemj-menu a:nth-child(3) {
+            transition-delay: 0.25s;
+        }
+        #cemj-menu {
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        #cemj-menu a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: transform 0.3s ease, opacity 0.2s ease;
+        }
+
+        /* When the menu is visible, transition the links to their final state */
+        #cemj-menu.visible a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Apply the hover effect to visible items */
+        #cemj-menu.visible a:hover {
+            transform: translateX(10px);
+        }
+
+        /* Staggered transition delays for both appearing and disappearing */
+        #cemj-menu a:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+        #cemj-menu a:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+        #cemj-menu a:nth-child(3) {
+            transition-delay: 0.25s;
+        }
+    </style>
+</head>
+<body>
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 1001;">
+        <a href="#" id="cemj-shop"><img src="wordart.png" alt="" width="120px" height="80px"></a>
+        <div id="cemj-menu" style="display: none;">
+            <a href="shop.html">Shop</a>
+            <a href="index.html">Listen</a>
+            <a href="#">About</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <!-- You can replace this with a real photo -->
+        <img src="favicon.ico" alt="Musician's Photo" class="profile-pic">
+        <h1>HYU44E</h1>
+        <p>
+            Luiz, AkA hyuaae(stylized as HYU44E), Is an producer, musician, developer and a artist. Most know by his music, he makes most of them in FL Studio, Logic Pro or garageband. Buy/Listen to his music now at the links below!
+        <div class="links">
+            <!-- Remember to replace # with your actual links -->
+            <a href="https://open.spotify.com/intl-en/artist/6ioSe48zKczycCV21mHzmg" target="_blank" title="Listen on Spotify">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify">
+            </a>
+            <a href="https://music.youtube.com/channel/UCgQ7c9DsARrBpvCfbMKnRlw" target="_blank" title="Listen on YouTube Music">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Youtube_Music_icon.svg" alt="YouTube Music">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('cemj-shop').addEventListener('click', (event) => {
+            event.preventDefault();
+            const menu = document.getElementById('cemj-menu');
+            if (menu.classList.contains('visible')) {
+                menu.classList.remove('visible');
+                // Wait for the animation to finish before hiding the element.
+                // The timeout duration is the longest transition + longest delay.
+                // 0.3s + 0.25s = 0.55s. We'll use 550ms.
+                setTimeout(() => {
+                    // Only hide if the user hasn't re-opened it in the meantime.
+                    if (!menu.classList.contains('visible')) {
+                        menu.style.display = 'none';
+                    }
+                }, 550);
+            } else {
+                menu.style.display = 'block';
+                // A minimal timeout ensures the 'display' property is applied before
+                // the class that triggers the transition is added. This makes the
+                // appear animation work reliably.
+                setTimeout(() => menu.classList.add('visible'), 10);
+            }
+        });
+    </script>
+</body>
+</html>
